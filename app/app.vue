@@ -1,6 +1,15 @@
+<script setup lang="ts">
+const isComingSoon = true
+</script>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <main>
+    <div v-if="isComingSoon">
+      <ComingSoon />
+    </div>
+    <div v-else>
+      <NuxtRouteAnnouncer />
+      <NuxtPage />
+    </div>
+  </main>
 </template>

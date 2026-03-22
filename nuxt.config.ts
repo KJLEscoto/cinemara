@@ -1,5 +1,51 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
+
+const siteTitle = "Cinemara | KinWebb";
+const siteDescription =
+  "A curated hub for film lovers to explore movies, browse overviews, and watch trailers — all before deciding what's next. Designed and developed by KinWebb. © 2026 Kent Joemar Escoto.";
+const siteVerification = "eMMfU0WDt9Hz-TWRGBTQY-mgFsF66m9octorJRumMzQ";
+const siteThumbnail = "https://kinwebb.netlify.app/cinemara_thumbnail.png";
+const siteIcon = "/images/Icon.png";
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  css: ['./app/assets/css/main.css'],
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
+  app: {
+    head: {
+      title: siteTitle,
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+
+        // search console verification
+        { name: "google-site-verification", content: siteVerification },
+
+        // SEO
+        { name: "description", content: siteDescription },
+
+        // Open Graph (previews: FB, Discord, iMessage, etc.)
+        { property: "og:type", content: "website" },
+        { property: "og:title", content: siteTitle },
+        { property: "og:description", content: siteDescription },
+        // { property: "og:image", content: siteThumbnail },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { property: "og:image:type", content: "image/png" },
+
+        // Twitter/X
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: siteTitle },
+        { name: "twitter:description", content: siteDescription },
+        // { name: "twitter:image", content: siteThumbnail },
+      ],
+      link: [{ rel: "icon", type: "image/png", href: siteIcon }],
+    },
+  },
 })
