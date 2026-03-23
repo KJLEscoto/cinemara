@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@theme {
+  --font-primary: "Outfit", "sans-serif";
+  --color-primary: #c93636;
+  --color-black: #131313;
+  --color-muted: rgba(255, 255, 255, 0.7);
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-primary selection:text-white selection:bg-primary;
+  }
+
+  .color-muted {
+    @apply text-white/70;
+  }
+}

@@ -9,14 +9,29 @@ const siteThumbnail = "https://kinwebb.netlify.app/cinemara_thumbnail.png";
 const siteIcon = "/images/Icon.png";
 
 export default defineNuxtConfig({
+  pages: false,
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['./app/assets/css/main.css'],
+  modules: ["@nuxt/fonts"],
+
+  fonts: {
+    families: [
+      {
+        name: "Outfit",
+        provider: "google",
+        weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        styles: ["normal"],
+      },
+    ],
+  },
+
   vite: {
     plugins: [
       tailwindcss(),
     ],
   },
+
   app: {
     head: {
       title: siteTitle,
@@ -48,4 +63,5 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/png", href: siteIcon }],
     },
   },
+
 })
