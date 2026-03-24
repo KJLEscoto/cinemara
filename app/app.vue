@@ -11,5 +11,6 @@ const isComingSoon = true
       <NuxtRouteAnnouncer />
       <NuxtPage />
     </div>
+    <KinwebbAttribute />
   </main>
 </template>

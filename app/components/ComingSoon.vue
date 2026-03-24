@@ -24,24 +24,24 @@ function notified() {
 </script>
 
 <template>
-  <main class="min-h-screen p-4 w-full flex items-center justify-center relative overflow-hidden">
+  <main class="min-h-screen px-4 py-20 w-full flex items-center justify-center relative overflow-hidden">
 
     <!-- blurs -->
-    <div class="bg-primary size-52 rounded-full absolute -top-20 blur-[120px] left-40"></div>
-    <div class="bg-primary size-52 rounded-full absolute -bottom-20 blur-[120px] right-0"></div>
+    <div class="bg-primary md:size-52 size-32 rounded-full absolute -top-20 blur-[120px] left-40"></div>
+    <div class="bg-primary md:size-52 size-32 rounded-full absolute -bottom-20 blur-[120px] right-0"></div>
 
     <div class="space-y-10 grid place-items-center max-w-4xl w-full z-10">
-      <section class="flex items-center gap-3">
-        <img class="w-12 h-12" src="/images/Icon.png" alt="cinemara icon">
-        <p class="font-semibold text-3xl">Cinemara</p>
+      <section class="flex items-center md:gap-3 gap-1">
+        <img class="md:size-12 size-8" src="/images/Icon.png" alt="cinemara icon">
+        <p class="font-semibold md:text-3xl text-2xl">Cinemara</p>
       </section>
 
-      <section class="font-black uppercase text-center text-5xl space-y-1">
+      <section class="font-black uppercase text-center md:text-5xl text-3xl md:space-y-1">
         <h1>YOUR NEXT OBSESSION</h1>
         <h1 class="text-primary">IS ALMOST HERE.</h1>
       </section>
 
-      <section class="text-center text-lg -mt-4">
+      <section class="text-center md:text-lg text-base md:-mt-4 -mt-8">
         <p class="text-muted">Cinemara is where you explore films, browse overviews, and watch trailers — all before
           deciding what's next. Drop your email and we'll tell you the moment we go live.</p>
       </section>
@@ -53,18 +53,18 @@ function notified() {
       </section>
 
       <section class="space-y-2 max-w-xl w-full">
-        <p>Get notified when we launch</p>
-        <form @submit.prevent="notified" class="flex items-center gap-2 w-full">
-          <input v-model="email" class="bg-white placeholder:text-black/40 p-4 text-black rounded-lg w-full"
+        <p class="md:text-base text-sm">Get notified when we launch</p>
+        <form @submit.prevent="notified" class="flex md:flex-row flex-col md:items-center items-start gap-2 w-full">
+          <input v-model="email" class="bg-white placeholder:text-black/40 md:p-4 p-3 text-black rounded-lg w-full"
             :class="{ 'ring-2 ring-primary': error }" type="email" name="email_address" id="email_address"
             placeholder="Enter your email address">
+          <p v-if="error" class="text-primary text-sm">{{ error }}</p>
           <button type="submit"
-            class="bg-primary py-4 px-6 rounded-lg w-fit cursor-pointer flex items-center gap-2 text-nowrap">
+            class="bg-primary md:py-4 py-3 px-6 rounded-lg md:w-fit w-full cursor-pointer flex items-center justify-center gap-2 text-nowrap">
             <BellRing class="pointer-events-none size-5" />
             Notify Me
           </button>
         </form>
-        <p v-if="error" class="text-primary text-sm">{{ error }}</p>
       </section>
     </div>
 
