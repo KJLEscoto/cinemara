@@ -54,11 +54,13 @@ function notified() {
 
       <section class="space-y-2 max-w-xl w-full">
         <p class="md:text-base text-sm">Get notified when we launch</p>
-        <form @submit.prevent="notified" class="flex md:flex-row flex-col md:items-center items-start gap-2 w-full">
-          <input v-model="email" class="bg-white placeholder:text-black/40 md:p-4 p-3 text-black rounded-lg w-full"
-            :class="{ 'ring-2 ring-primary': error }" type="email" name="email_address" id="email_address"
-            placeholder="Enter your email address">
-          <p v-if="error" class="text-primary text-sm">{{ error }}</p>
+        <form @submit.prevent="notified" class="flex md:flex-row flex-col items-start gap-2 w-full">
+          <div class="space-y-2 w-full">
+            <input v-model="email" class="bg-white placeholder:text-black/40 md:p-4 p-3 text-black rounded-lg w-full"
+              :class="{ 'ring-2 ring-primary': error }" type="email" name="email_address" id="email_address"
+              placeholder="Enter your email address">
+            <p v-if="error" class="text-primary text-sm">{{ error }}</p>
+          </div>
           <button type="submit"
             class="bg-primary md:py-4 py-3 px-6 rounded-lg md:w-fit w-full cursor-pointer flex items-center justify-center gap-2 text-nowrap">
             <BellRing class="pointer-events-none size-5" />
