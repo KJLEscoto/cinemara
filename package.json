@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@lorenzopant/tmdb": "^1.21.0",
     "@lucide/vue": "^1.0.0-rc.0",
     "@nuxt/fonts": "^0.14.0",
     "@tailwindcss/vite": "^4.2.2",
@@ -18,5 +19,8 @@
     "tailwindcss": "^4.2.2",
     "vue": "^3.5.30",
     "vue-router": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0"
   }
 }

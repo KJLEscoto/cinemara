@@ -64,4 +64,10 @@ export default defineNuxtConfig({
     },
   },
 
+  runtimeConfig: {
+    tmdbBearerToken: process.env.TMDB_BEARER_TOKEN, // server-only (private)
+    public: {
+      tmdbToken: process.env.TMDB_BEARER_TOKEN, // exposed to client
+    }
+  }
 })
