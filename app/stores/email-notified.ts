@@ -31,13 +31,35 @@ export const useEmailNotifiedStore = defineStore('email-notified', () => {
     return true
   }
 
-  async function isAlreadyInFirestore(db: any): Promise<boolean> {
+  async function isAlreadyInFirestore(db: any, emailToCheck: string): Promise<boolean> {
     const q = query(
       collection(db, 'listed_emails'),
-      where('email', '==', email.value)
+      where('email', '==', emailToCheck)
     )
     const snapshot = await getDocs(q)
     return !snapshot.empty
+  }
+
+    // Verify cookie email still exists in Firestore
+  // If deleted from Firestore, clear the cookie too
+  async function verifyCookie() {
+    if (!listedEmail.value) return
+
+    try {
+      const { $firebase } = useNuxtApp()
+      const stillExists = await isAlreadyInFirestore($firebase.db, listedEmail.value)
+
+      if (!stillExists) {
+        // Deleted from Firestore — clear cookie and reset
+        listedEmail.value = null
+        success.value = false
+      } else {
+        success.value = true
+      }
+    } catch (e) {
+      // If check fails, keep cookie as-is to avoid false clears
+      success.value = true
+    }
   }
 
   async function submit() {
@@ -51,7 +73,7 @@ export const useEmailNotifiedStore = defineStore('email-notified', () => {
       const { $firebase } = useNuxtApp()
 
       // Always check Firestore — cookie may have been deleted
-      const alreadyExists = await isAlreadyInFirestore($firebase.db)
+      const alreadyExists = await isAlreadyInFirestore($firebase.db, email.value)
 
       if (alreadyExists) {
         // Exists in Firestore — show info but do NOT save to cookie
@@ -87,5 +109,5 @@ export const useEmailNotifiedStore = defineStore('email-notified', () => {
     isInfo.value = false
   }
 
-  return { email, error, success, loading, isInfo, listedEmail, submit, reset }
+  return { email, error, success, loading, isInfo, listedEmail, submit, reset, verifyCookie }
 })

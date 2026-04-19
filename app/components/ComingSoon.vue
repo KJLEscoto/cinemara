@@ -12,6 +12,11 @@ const { data: movies } = await useAsyncData('movies', () =>
 // Check cookie synchronously — no flash
 const listedEmail = useCookie('listed_email')
 const isListed = computed(() => !!listedEmail.value || store.success)
+
+// Verify cookie on component mount
+onMounted(() => {
+  store.verifyCookie()
+})
 </script>
 
 <template>
