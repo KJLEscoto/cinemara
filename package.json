@@ -13,9 +13,12 @@
     "@lorenzopant/tmdb": "^1.21.0",
     "@lucide/vue": "^1.0.0-rc.0",
     "@nuxt/fonts": "^0.14.0",
+    "@pinia/nuxt": "^0.11.3",
     "@tailwindcss/vite": "^4.2.2",
+    "firebase": "^12.12.0",
     "kinwebb-attribute": "^1.0.4",
     "nuxt": "^4.4.2",
+    "pinia": "^3.0.4",
     "tailwindcss": "^4.2.2",
     "vue": "^3.5.30",
     "vue-router": "^5.0.3"
